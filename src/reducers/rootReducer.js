@@ -1,3 +1,4 @@
+
 //get dimensions for grid based on window size
 const width = Math.floor(window.innerWidth * 0.5);
 const height = Math.floor(window.innerHeight * 0.7);
@@ -7,7 +8,7 @@ const gameGrid = Array(rows).fill().map(() => Array(cols).fill(false));
 
 //declare initial state for reducer
 const initialState = {
-    dim:{
+    dims:{
         width: width,
         height: height,
         rows: rows,
@@ -17,7 +18,7 @@ const initialState = {
 
 }
 
-const rootReducer = (state = initialState, action) =>{
+const rootReducer = (state = initialState, action) => {
     switch(action.type){
         default:
             return state
@@ -25,3 +26,5 @@ const rootReducer = (state = initialState, action) =>{
 }
 
 export default rootReducer
+
+

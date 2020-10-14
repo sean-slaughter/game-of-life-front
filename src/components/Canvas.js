@@ -4,6 +4,7 @@ import { createRef } from 'react';
 export class Canvas extends Component {
 
     constructor(props){
+        super(props)
         this.canvas = createRef();
     }
 
