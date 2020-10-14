@@ -6,7 +6,7 @@ export class CanvasContainer extends Component {
     render() {
         return (
             <div>
-                <Canvas/>
+                <Canvas dims={this.props.dims} gameGrid={this.props.gameGrid}/>
             </div>
         )
     }

@@ -9,6 +9,7 @@ const gameGrid = Array(rows).fill().map(() => Array(cols).fill(false));
 //declare initial state for reducer
 const initialState = {
     dims:{
+        cellSize: 10,
         width: width,
         height: height,
         rows: rows,
