@@ -19,7 +19,7 @@ export class Canvas extends Component {
 
     render() {
         return (
-            <canvas onMouseMove={this.handleMouseMove} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} ref={this.canvas} width={this.width} height={this.height}></canvas>
+            <canvas onClick={this.handleClick}onMouseMove={this.handleMouseMove} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} ref={this.canvas} width={this.width} height={this.height}></canvas>
         )
     }
 
@@ -28,7 +28,9 @@ export class Canvas extends Component {
     }
 
     handleClick = (e) =>{
-        
+        let x = Math.floor(e.nativeEvent.offsetX/this.cellSize);
+        let y = Math.floor(e.nativeEvent.offsetY/this.cellSize);
+        console.log(x, y)
     }
 
     handleMouseDown = () => {
@@ -43,7 +45,11 @@ export class Canvas extends Component {
     }
 
     handleMouseMove = (e) => {
-
+        if(this.state.down){
+            let x = Math.floor(e.nativeEvent.offsetX/this.cellSize);
+            let y = Math.floor(e.nativeEvent.offsetY/this.cellSize);
+            console.log(x, y)
+        }
     }
 
     drawCanvas = () => {
@@ -53,6 +59,7 @@ export class Canvas extends Component {
             ctx.strokeStyle = "black";
             for(let i = 0; i < this.cols; i++){
                 for(let j = 0; j < this.rows; j++){
+            
                     ctx.fillStyle = "white";
                     ctx.strokeRect(i * this.cellSize, j * this.cellSize, this.cellSize, this.cellSize)
                     ctx.fillRect(i * this.cellSize, j * this.cellSize, this.cellSize, this.cellSize)
