@@ -5,6 +5,9 @@ export class Canvas extends Component {
 
     constructor(props){
         super(props)
+        this.state = {
+            down: false
+        }
         this.canvas = createRef();
         this.rows = this.props.dims.rows
         this.cols = this.props.dims.cols
@@ -16,12 +19,18 @@ export class Canvas extends Component {
 
     render() {
         return (
-            <canvas ref={this.canvas} width={this.width} height={this.height}></canvas>
+            <canvas onMouseMove={this.handleMouseMove} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} ref={this.canvas} width={this.width} height={this.height}></canvas>
         )
     }
 
     componentDidMount(){
         this.drawCanvas()
+    }
+
+    handleMouseDown = () => {
+        this.setState({
+            down: true
+        })
     }
 
     drawCanvas = () => {
