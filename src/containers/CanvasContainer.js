@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Canvas from '../components/Canvas'
 import { connect } from 'react-redux'
+import changeCell from '../actions/gameActions'
 
 export class CanvasContainer extends Component {
     render() {
         return (
             <div>
-                <Canvas dims={this.props.dims} gameGrid={this.props.gameGrid}/>
+                <Canvas dims={this.props.dims} gameGrid={this.props.gameGrid} changeCell={this.props.changeCell}/>
             </div>
         )
     }
@@ -20,7 +21,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-
+    return{
+        changeCell: (coords) => {dispatch(changeCell(coords))}
+    }
 }
 
-export default connect(mapStateToProps)(CanvasContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CanvasContainer)

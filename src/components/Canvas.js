@@ -23,14 +23,20 @@ export class Canvas extends Component {
         )
     }
 
-    componentDidMount(){
+    componentDidMount = () => {
         this.drawCanvas()
     }
+    
+    componentDidUpdate = () => {
+        this.drawCanvas()
+    }
+   
 
     handleClick = (e) =>{
         let x = Math.floor(e.nativeEvent.offsetX/this.cellSize);
         let y = Math.floor(e.nativeEvent.offsetY/this.cellSize);
-        console.log(y,x)
+        this.props.changeCell({y, x})
+        
     }
 
     handleMouseDown = () => {
@@ -48,7 +54,7 @@ export class Canvas extends Component {
         if(this.state.down){
             let x = Math.floor(e.nativeEvent.offsetX/this.cellSize);
             let y = Math.floor(e.nativeEvent.offsetY/this.cellSize);
-            console.log(x, y)
+            this.props.changeCell({x, y})
         }
     }
 

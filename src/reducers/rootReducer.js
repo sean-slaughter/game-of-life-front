@@ -21,6 +21,13 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
+        case 'CHANGE_CELL':
+            const copyGrid = JSON.parse(JSON.stringify(state.gameGrid));
+            copyGrid[action.coords.y][action.coords.x] = !copyGrid[action.coords.y][action.coords.x];
+            return{
+                ...state,
+                gameGrid: copyGrid
+            } 
         default:
             return state
     }
