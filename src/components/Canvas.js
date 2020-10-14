@@ -14,7 +14,7 @@ export class Canvas extends Component {
         this.width = this.props.dims.width
         this.height = this.props.dims.height
         this.cellSize = this.props.dims.cellSize
-        this.gameGrid = this.props.dims.gameGrid
+        this.gameGrid = this.props.gameGrid
     }
 
     render() {
@@ -30,7 +30,7 @@ export class Canvas extends Component {
     handleClick = (e) =>{
         let x = Math.floor(e.nativeEvent.offsetX/this.cellSize);
         let y = Math.floor(e.nativeEvent.offsetY/this.cellSize);
-        console.log(x, y)
+        console.log(y,x)
     }
 
     handleMouseDown = () => {
@@ -59,8 +59,12 @@ export class Canvas extends Component {
             ctx.strokeStyle = "black";
             for(let i = 0; i < this.cols; i++){
                 for(let j = 0; j < this.rows; j++){
-            
-                    ctx.fillStyle = "white";
+                    if (!this.props.gameGrid[j][i]){
+                        ctx.fillStyle = "black"
+                    }
+                    else{
+                        ctx.fillStyle = "white";
+                    } 
                     ctx.strokeRect(i * this.cellSize, j * this.cellSize, this.cellSize, this.cellSize)
                     ctx.fillRect(i * this.cellSize, j * this.cellSize, this.cellSize, this.cellSize)
                 }
