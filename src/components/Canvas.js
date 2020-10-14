@@ -10,7 +10,6 @@ export class Canvas extends Component {
     render() {
         return (
             <canvas ref={this.canvas}></canvas>
-                
         )
     }
 }
