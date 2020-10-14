@@ -27,10 +27,23 @@ export class Canvas extends Component {
         this.drawCanvas()
     }
 
+    handleClick = (e) =>{
+        
+    }
+
     handleMouseDown = () => {
         this.setState({
             down: true
         })
+    }
+    handleMouseUp = () => {
+        this.setState({
+            down: false
+        })
+    }
+
+    handleMouseMove = (e) => {
+
     }
 
     drawCanvas = () => {
